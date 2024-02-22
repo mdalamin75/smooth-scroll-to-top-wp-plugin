@@ -38,4 +38,46 @@
         <?php
     }
     add_action('wp_footer', 'ssttw_scroll_script');
+
+    // Plugin Customization Settings
+    add_action('customize_register','ssttw_scroll_to_top');
+    function ssttw_scroll_to_top($wp_customize){
+        $wp_customize-> add_section('ssttw_scroll_top_section', array(
+            'title' => __('Scroll To Top', 'ssttw'),
+            'description' => 'Smooth Scroll to top plugin will help you to enable back to top your WordPress website smoothly.'
+        ));
+
+        $wp_customize-> add_setting('ssttw_default_color', array(
+            'default' => '#0000000',
+        ));
+        $wp_customize->add_control('ssttw_default_color', array(
+            'label' => 'Background Color',
+            'section' => 'ssttw_scroll_top_section',
+            'type' => 'color',
+        ));
+        
+        // Adding Rounded Corner
+        $wp_customize-> add_setting('ssttw_rounded_corner', array(
+            'default' => '5px',
+            'description' => 'If you need fully rounded or circular then use 25px here',
+        ));
+        $wp_customize->add_control('ssttw_rounded_corner', array(
+            'label' => 'Rounded Corner',
+            'section' => 'ssttw_scroll_top_section',
+            'type' => 'text',
+        ));
+    }
+
+    // Theme CSS Customization
+    function ssttw_plugin_color_cus(){
+        ?>
+            <style>
+                #scrollUp{
+                    background-color: <?php print get_theme_mod('ssttw_default_color');?>;
+                    border-radius: <?php print get_theme_mod('ssttw_rounded_corner');?>;
+                }
+            </style>
+        <?php
+    }
+    add_action('wp_head', 'ssttw_plugin_color_cus');
 ?>

@@ -1,13 +1,16 @@
 /*======================== Scroll Button Code Start =======================*/
 #scrollUp {
-    background-image: url("../img/top.png");
-    background-color: #000000;
     bottom: 5px;
     right: 5px;
     width: 38px;    /* Width of image */
     height: 38px;   /* Height of image */
     display: block;
     text-indent: -99999999px;
+    background-size: 20px;
+    background-color: #000000;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../img/upload.png");
 }
 
 /*======================== Scroll Button Code End =======================*/
